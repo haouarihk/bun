@@ -1958,6 +1958,7 @@ pub const HardcodedModule = enum {
     depd,
     undici,
     ws,
+    eventsource,
     // These are all not implemented yet, but are stubbed
     @"node:v8",
     @"node:trace_events",
@@ -2031,6 +2032,7 @@ pub const HardcodedModule = enum {
             .{ "node:zlib", HardcodedModule.@"node:zlib" },
             .{ "undici", HardcodedModule.undici },
             .{ "ws", HardcodedModule.ws },
+            .{ "eventsource", HardcodedModule.eventsource },
         },
     );
     pub const Alias = struct {
@@ -2132,6 +2134,7 @@ pub const HardcodedModule = enum {
             .{ "ws", .{ .path = "ws" } },
             .{ "ws/lib/websocket", .{ .path = "ws" } },
             .{ "zlib", .{ .path = "node:zlib" } },
+            .{ "eventsource", .{ .path = "eventsource" } },
 
             // These are returned in builtinModules, but probably not many packages use them
             // so we will just alias them.

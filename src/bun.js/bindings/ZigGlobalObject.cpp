@@ -3180,6 +3180,36 @@ JSC_DEFINE_CUSTOM_GETTER(functionBuildMessageGetter, (JSGlobalObject * globalObj
     return JSValue::encode(reinterpret_cast<Zig::GlobalObject*>(globalObject)->JSBuildMessageConstructor());
 }
 
+JSC_DEFINE_CUSTOM_GETTER(
+    EventSource_getter, (JSGlobalObject * globalObject, EncodedJSValue thisValue, PropertyName property))
+{
+
+    JSValue value = JSValue::decode(thisValue);
+    auto& vm = globalObject->vm();
+    JSC::JSObject* thisObject = value.toObject(globalObject);
+
+    auto scope = DECLARE_THROW_SCOPE(vm);
+    JSC::JSFunction* getSourceEvent = JSC::JSFunction::create(vm, eventSourceGetEventSourceCodeGenerator(vm), globalObject);
+    JSC::MarkedArgumentBuffer args;
+
+    auto clientData = WebCore::clientData(vm);
+    JSC::CallData callData = JSC::getCallData(getSourceEvent);
+
+    NakedPtr<JSC::Exception> returnedException = nullptr;
+    auto result = JSC::call(globalObject, getSourceEvent, callData, globalObject->globalThis(), args, returnedException);
+    RETURN_IF_EXCEPTION(scope, {});
+    
+    if (returnedException) {
+        throwException(globalObject, scope, returnedException.get());
+        return JSValue::encode(JSC::jsUndefined());
+    }
+
+    if (result)
+        thisObject->putDirect(vm, property, result, 0);
+
+    return JSValue::encode(result);
+}
+
 EncodedJSValue GlobalObject::assignToStream(JSValue stream, JSValue controller)
 {
     JSC::VM& vm = this->vm();
@@ -3473,6 +3503,9 @@ void GlobalObject::addBuiltinGlobals(JSC::VM& vm)
 
     putDirectCustomAccessor(vm, JSC::Identifier::fromString(vm, "CloseEvent"_s), JSC::CustomGetterSetter::create(vm, JSCloseEvent_getter, nullptr),
         JSC::PropertyAttribute::DontDelete | JSC::PropertyAttribute::ReadOnly);
+
+    putDirectCustomAccessor(vm, JSC::Identifier::fromString(vm, "EventSource"_s), JSC::CustomGetterSetter::create(vm, EventSource_getter, nullptr),
+        JSC::PropertyAttribute::DontDelete | JSC::PropertyAttribute::ReadOnly | 0);
 
     auto bufferAccessor = JSC::CustomGetterSetter::create(vm, JSBuffer_getter, JSBuffer_setter);
     auto realBufferAccessor = JSC::CustomGetterSetter::create(vm, JSBuffer_privateGetter, nullptr);

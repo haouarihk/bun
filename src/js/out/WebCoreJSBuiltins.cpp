@@ -2028,9 +2028,9 @@ const char* const s_readableStreamReadableStreamToTextCode = "(function (p){\"us
 const JSC::ConstructAbility s_readableStreamReadableStreamToArrayBufferCodeConstructAbility = JSC::ConstructAbility::CannotConstruct;
 const JSC::ConstructorKind s_readableStreamReadableStreamToArrayBufferCodeConstructorKind = JSC::ConstructorKind::None;
 const JSC::ImplementationVisibility s_readableStreamReadableStreamToArrayBufferCodeImplementationVisibility = JSC::ImplementationVisibility::Private;
-const int s_readableStreamReadableStreamToArrayBufferCodeLength = 271;
+const int s_readableStreamReadableStreamToArrayBufferCodeLength = 270;
 static const JSC::Intrinsic s_readableStreamReadableStreamToArrayBufferCodeIntrinsic = JSC::NoIntrinsic;
-const char* const s_readableStreamReadableStreamToArrayBufferCode = "(function (_){\"use strict\";var b=@getByIdDirectPrivate(_,\"underlyingSource\");if(b!==@undefined)return @readableStreamToArrayBufferDirect(_,b);var p=@Bun.readableStreamToArray(_);if(@isPromise(p))return p.@then(@Bun.concatArrayBuffers);return @Bun.concatArrayBuffers(p)})\n";
+const char* const s_readableStreamReadableStreamToArrayBufferCode = "(function (_){\"use strict\";var b=@getByIdDirectPrivate(_,\"underlyingSource\");if(b!==@undefined)return @readableStreamToArrayBufferDirect(_,b);var p=@Bun.readableStreamToArray(_);if(@isPromise(p))return p.then(@Bun.concatArrayBuffers);return @Bun.concatArrayBuffers(p)})\n";
 
 // readableStreamToJSON
 const JSC::ConstructAbility s_readableStreamReadableStreamToJSONCodeConstructAbility = JSC::ConstructAbility::CannotConstruct;
@@ -2416,7 +2416,6 @@ const int s_writableStreamInternalsAcquireWritableStreamDefaultWriterCodeLength 
 static const JSC::Intrinsic s_writableStreamInternalsAcquireWritableStreamDefaultWriterCodeIntrinsic = JSC::NoIntrinsic;
 const char* const s_writableStreamInternalsAcquireWritableStreamDefaultWriterCode = "(function (b){\"use strict\";return new @WritableStreamDefaultWriter(b)})\n";
 
-
 // createWritableStream
 const JSC::ConstructAbility s_writableStreamInternalsCreateWritableStreamCodeConstructAbility = JSC::ConstructAbility::CannotConstruct;
 const JSC::ConstructorKind s_writableStreamInternalsCreateWritableStreamCodeConstructorKind = JSC::ConstructorKind::None;
@@ -2424,15 +2423,6 @@ const JSC::ImplementationVisibility s_writableStreamInternalsCreateWritableStrea
 const int s_writableStreamInternalsCreateWritableStreamCodeLength = 278;
 static const JSC::Intrinsic s_writableStreamInternalsCreateWritableStreamCodeIntrinsic = JSC::NoIntrinsic;
 const char* const s_writableStreamInternalsCreateWritableStreamCode = "(function (u,d,p,N,_,f){\"use strict\";@assert(typeof _===\"number\"&&!@isNaN(_)&&_>=0);const j={};@initializeWritableStreamSlots(j,{});const q=new @WritableStreamDefaultController;return @setUpWritableStreamDefaultController(j,q,u,d,p,N,_,f),@createWritableStreamFromInternal(j)})\n";
-
-// readableStreamToArrayBuffer
-const JSC::ConstructAbility s_readableStreamReadableStreamToArrayBufferCodeConstructAbility = JSC::ConstructAbility::CannotConstruct;
-const JSC::ConstructorKind s_readableStreamReadableStreamToArrayBufferCodeConstructorKind = JSC::ConstructorKind::None;
-const JSC::ImplementationVisibility s_readableStreamReadableStreamToArrayBufferCodeImplementationVisibility = JSC::ImplementationVisibility::Private;
-const int s_readableStreamReadableStreamToArrayBufferCodeLength = 270;
-static const JSC::Intrinsic s_readableStreamReadableStreamToArrayBufferCodeIntrinsic = JSC::NoIntrinsic;
-const char* const s_readableStreamReadableStreamToArrayBufferCode = "(function (_){\"use strict\";var b=@getByIdDirectPrivate(_,\"underlyingSource\");if(b!==@undefined)return @readableStreamToArrayBufferDirect(_,b);var p=@Bun.readableStreamToArray(_);if(@isPromise(p))return p.then(@Bun.concatArrayBuffers);return @Bun.concatArrayBuffers(p)})\n";
-
 
 // createInternalWritableStreamFromUnderlyingSink
 const JSC::ConstructAbility s_writableStreamInternalsCreateInternalWritableStreamFromUnderlyingSinkCodeConstructAbility = JSC::ConstructAbility::CannotConstruct;
